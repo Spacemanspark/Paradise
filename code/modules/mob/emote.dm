@@ -48,7 +48,10 @@
 	else
 		input = message
 	if(input)
-		message = "<B>[src]</B> [input]"
+		if(findtext(input, "&#39;", 1)) //Due to Byond being a little shit as per usual, we have to use this instead of just putting an apostrophe and calling it a day. No, typing these characters into the chat in place of the apostrophe will not count.
+			message = "<B>[src]</B>[input]" //If our emote begins with an apostrophe, we don't want it to have an extra space.
+		else
+			message = "<B>[src]</B> [input]"
 	else
 		return
 
